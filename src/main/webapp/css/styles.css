@@ -1,0 +1,194 @@
+/* --- VARIABLES Y RESET --- */
+:root {
+    --bg-dark: #070911; /* Fondo ultra oscuro profundo */
+    --card-bg: rgba(255, 255, 255, 0.05); /* Efecto vidrio: transparente */
+    --card-border: rgba(255, 255, 255, 0.1);
+
+    --indigo-primary: #4f46e5; /* Azul índigo moderno */
+    --purple-primary: #9333ea; /* Púrpura vibrante */
+
+    --neon-indigo-glow: 0 0 20px rgba(79, 70, 229, 0.6);
+    --neon-purple-glow: 0 0 20px rgba(147, 51, 234, 0.6);
+
+    --text-white: #ffffff;
+    --text-muted: #a0aec0;
+    --success: #10b981; /* Verde neón */
+    --danger: #ef4444;  /* Rojo neón */
+
+    --font-main: 'Poppins', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-white);
+    font-family: var(--font-main);
+    overflow-x: hidden;
+}
+
+/* --- EFECTO DE FONDO ANIMADO --- */
+.background-animation {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
+}
+
+.circle {
+    position: absolute; border-radius: 50%; opacity: 0.2; filter: blur(80px);
+    animation: float 20s infinite ease-in-out;
+}
+
+.circle-indigo {
+    width: 600px; height: 600px; background: var(--indigo-primary);
+    top: -200px; left: -100px; animation-delay: 0s;
+}
+
+.circle-purple {
+    width: 400px; height: 400px; background: var(--purple-primary);
+    bottom: -100px; right: -50px; animation-delay: 2s;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) translateX(0); }
+    50% { transform: translateY(-50px) translateX(20px); }
+}
+
+/* --- LAYOUT PRINCIPAL --- */
+.app-container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+
+.main-header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding-bottom: 2rem; border-bottom: 1px solid var(--card-border);
+}
+
+.logo { font-size: 1.8rem; font-weight: 700; letter-spacing: -1px; text-shadow: var(--neon-indigo-glow); }
+.purple-text { color: var(--purple-primary); }
+
+.agente-info {
+    font-size: 0.9rem; color: var(--text-muted); display: flex; align-items: center;
+}
+
+.status-indicator {
+    width: 10px; height: 10px; background-color: var(--success);
+    border-radius: 50%; margin-right: 8px; box-shadow: 0 0 10px var(--success);
+}
+
+.dashboard { margin-top: 3rem; }
+.page-title { font-size: 2.5rem; font-weight: 300; margin-bottom: 2rem; }
+.gradient-text {
+    background: linear-gradient(90deg, var(--indigo-primary), var(--purple-primary));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    font-weight: 700; text-shadow: var(--neon-purple-glow);
+}
+
+/* --- TARJETAS GLASSMORPHISM --- */
+.neo-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    backdrop-filter: blur(15px); /* Efecto esmerilado de vidrio */
+    border-radius: 20px; padding: 2.5rem; margin-bottom: 2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.neo-card:hover {
+    box-shadow: var(--neon-indigo-glow);
+}
+
+.card-header h2 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+.card-header p { color: var(--text-muted); margin-bottom: 2rem; font-size: 0.9rem; }
+
+/* --- INPUTS Y FORMULARIOS FUTURISTAS --- */
+.form-group label { display: block; margin-bottom: 0.8rem; font-size: 0.8rem; color: var(--text-muted); }
+
+input[type="text"], input[type="number"] {
+    width: 100%; background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--card-border); color: white;
+    padding: 1.2rem 1.5rem; border-radius: 12px; font-family: var(--font-main); font-size: 1rem;
+    transition: all 0.3s;
+}
+
+input:focus {
+    outline: none; border-color: var(--purple-primary);
+    box-shadow: var(--neon-purple-glow);
+}
+
+.flex-group { display: flex; gap: 1rem; margin-top: 1rem; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+
+/* --- BOTONES NEÓN CON GRADIENETE --- */
+button {
+    border: none; border-radius: 12px; font-family: var(--font-main);
+    font-weight: 600; cursor: pointer; transition: all 0.3s; display: flex;
+    align-items: center; justify-content: center; gap: 0.8rem;
+    font-size: 0.95rem;
+}
+
+.icon { font-size: 1.1rem; }
+
+/* Botón Buscar (Indigo glow) */
+.btn-primary {
+    background: linear-gradient(135deg, var(--indigo-primary), #6366f1);
+    color: white; padding: 1rem 2rem; text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px); box-shadow: var(--neon-indigo-glow);
+}
+
+/* Botón Abono (Green glow) */
+.btn-success {
+    background: rgba(16, 185, 129, 0.1); border: 1px solid var(--success);
+    color: var(--success); width: 100%; padding: 1.2rem;
+}
+
+.btn-success:hover {
+    background: var(--success); color: white; box-shadow: 0 0 20px rgba(16, 185, 129, 0.5);
+}
+
+/* Botón Retiro (Red glow) */
+.btn-danger {
+    background: rgba(239, 68, 68, 0.1); border: 1px solid var(--danger);
+    color: var(--danger); width: 100%; padding: 1.2rem;
+}
+
+.btn-danger:hover {
+    background: var(--danger); color: white; box-shadow: 0 0 20px rgba(239, 68, 68, 0.5);
+}
+
+.actions-group { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+
+/* --- DISEÑO DE CUENTAS COMO TARJETAS VIRTUALES --- */
+.results-container { margin-top: 2rem; }
+
+.accounts-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Estilo de la tarjeta de crédito virtual */
+.virtual-card {
+    background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+    border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 15px;
+    padding: 1.5rem; cursor: pointer; transition: all 0.3s;
+    display: flex; flex-direction: column; justify-content: space-between;
+    height: 190px;
+}
+
+.virtual-card:hover {
+    border-color: var(--purple-primary); transform: scale(1.03); box-shadow: var(--neon-purple-glow);
+}
+
+.card-top { display: flex; justify-content: space-between; align-items: center; }
+.card-type { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); }
+.chip { width: 40px; height: 30px; background: rgba(255, 255, 255, 0.1); border-radius: 5px; }
+
+.acc-number { font-size: 1.2rem; font-weight: 600; letter-spacing: 1px; color: var(--text-white); margin-top: 1rem; }
+
+.card-bottom { display: flex; justify-content: space-between; align-items: flex-end; }
+.balance-label { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; }
+.acc-balance { font-size: 1.5rem; font-weight: 700; color: white; }
+
+/* --- NOTIFICACIONES --- */
+.notification-area { margin-top: 2rem; padding: 1rem; border-radius: 12px; text-align: center; }
+.notification-area p { font-size: 0.9rem; font-weight: 600; }
+.notification-area p.success { color: var(--success); text-shadow: 0 0 10px rgba(16, 185, 129, 0.3); }
+.notification-area p.error { color: var(--danger); text-shadow: 0 0 10px rgba(239, 68, 68, 0.3); }
