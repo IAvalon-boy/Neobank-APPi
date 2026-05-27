@@ -1,4 +1,5 @@
-const API_URL = "http://localhost:8080/BancoRestApi";// Ajusta según tu mapeo de Jersey
+// API Jersey mapeada en web.xml como /api/*
+const API_URL = "http://localhost:8080/BancoRestApi/api";
 
 // 1. GET: Obtener cuentas por DUI
 // Asegúrate de que API_URL esté apuntando correctamente, ej: "http://localhost:8080/BancoRestApi/api"

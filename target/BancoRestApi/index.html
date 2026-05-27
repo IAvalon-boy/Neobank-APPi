@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexBank Global - Panel del Agente</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<div class="background-animation">
+    <div class="circle circle-indigo"></div>
+    <div class="circle circle-purple"></div>
+</div>
+
+<div class="app-container">
+
+    <header class="main-header">
+        <div class="logo">Nex<span class="purple-text">Bank</span></div>
+        <div class="agente-info">
+            <span class="status-indicator"></span>
+            Agente Autorizado
+        </div>
+    </header>
+
+    <main class="dashboard">
+
+        <h1 class="page-title">Terminal de <span class="gradient-text">Operaciones de Caja</span></h1>
+
+        <section class="neo-card consult-section">
+            <div class="card-header">
+                <h2>🔍 1. Consultar Cliente</h2>
+                <p>Busca cuentas asociadas al Documento Único de Identidad.</p>
+            </div>
+            <div class="form-group flex-group">
+                <input type="text" id="inputDui" placeholder="Ingrese DUI (ej. 12345678-9)" maxlength="10">
+                <button class="btn-primary" onclick="consultarCuentas()">
+                    <span class="icon">✨</span> Buscar
+                </button>
+            </div>
+
+            <div id="resultadoCuentas" class="results-container"></div>
+        </section>
+
+        <section class="neo-card transact-section">
+            <div class="card-header">
+                <h2>⚡ 2. Operaciones Rápidas</h2>
+                <p>Realiza depósitos o retiros inmediatos.</p>
+            </div>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="numCuenta">Seleccionar o Escribir Cuenta</label>
+                    <input type="text" id="numCuenta" placeholder="000-000000-00">
+                </div>
+                <div class="form-group">
+                    <label for="monto">Monto de la Transacción ($)</label>
+                    <input type="number" id="monto" placeholder="50.00" step="0.01">
+                </div>
+            </div>
+
+            <div class="actions-group">
+                <button class="btn-success" onclick="procesarTransaccion('abonarefectivo')">
+                    <span class="icon">▼</span> Abonar Efectivo
+                </button>
+                <button class="btn-danger" onclick="procesarTransaccion('retirarefectivo')">
+                    <span class="icon">▲</span> Retirar Efectivo
+                </button>
+            </div>
+
+            <div id="resultadoTransaccion" class="notification-area"></div>
+        </section>
+    </main>
+</div>
+
+<script src="js/app.js"></script>
+</body>
+</html>

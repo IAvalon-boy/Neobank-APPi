@@ -1,0 +1,16 @@
+# Maven / Java build output
+target/
+*.class
+*.jar
+*.war
+*.ear
+
+# IDE local files (Visual Studio / VS Code / IntelliJ)
+.vs/
+.vscode/
+.idea/
+*.iml
+
+# OS files
+.DS_Store
+Thumbs.db
