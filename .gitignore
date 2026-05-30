@@ -1,16 +1,40 @@
-# Maven / Java build output
+# Maven / Java (generado al compilar)
 target/
 *.class
 *.jar
 *.war
 *.ear
 
-# IDE local files (Visual Studio / VS Code / IntelliJ)
+# Copias y respaldos locales
+*~
+*.bak
+*.swp
+*.tmp
+
+# Configuracion local (credenciales distintas por maquina)
+.env
+.env.*
+config.local.ps1
+config.local.sh
+hibernate-local.cfg.xml
+application-local.properties
+
+# Logs
+*.log
+logs/
+
+# IDE
 .vs/
 .vscode/
 .idea/
 *.iml
+*.ipr
+*.iws
+.project
+.classpath
+.settings/
 
-# OS files
+# OS
 .DS_Store
 Thumbs.db
+desktop.ini

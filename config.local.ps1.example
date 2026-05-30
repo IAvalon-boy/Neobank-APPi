@@ -1,0 +1,17 @@
+# =============================================================================
+# Configuracion local de MySQL (NO subir a Git)
+# =============================================================================
+# 1. Copia este archivo como:  config.local.ps1
+# 2. Ajusta usuario y contraseña segun tu MySQL
+# 3. Ejecuta:  .\setup-db.ps1
+# 4. Arranca:   .\iniciar.ps1
+#
+# Ejemplos:
+#   MySQL local sin clave  ->  MYSQL_PASSWORD = ""
+#   Docker / XAMPP         ->  MYSQL_PASSWORD = "1234"  (o la clave que uses)
+# =============================================================================
+
+$script:MYSQL_USER = "root"
+$script:MYSQL_PASSWORD = ""
+$script:MYSQL_HOST = "localhost"
+$script:MYSQL_PORT = "3306"

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout :: layout('Consultar Cliente', ~{::main}, ~{::scripts})}">
+<main>
+    <h1 class="page-title">Consultar <span class="gradient-text">Cliente</span></h1>
+    <p class="page-subtitle">Busque cuentas asociadas al Documento Único de Identidad.</p>
+
+    <section class="neo-card consult-section">
+        <div class="card-header">
+            <h2>Buscar por DUI</h2>
+            <p>Formato requerido: 12345678-9</p>
+        </div>
+        <div class="form-group flex-group">
+            <input type="text" id="inputDui" placeholder="Ingrese DUI (ej. 12345678-9)" maxlength="10"
+                   pattern="\d{8}-\d" title="Formato: 12345678-9">
+            <button type="button" class="btn-primary" id="btnBuscar">
+                <span class="icon">✨</span> Buscar
+            </button>
+        </div>
+        <div id="resultadoCuentas" class="results-container"></div>
+    </section>
+</main>
+<th:block th:fragment="scripts">
+    <script th:src="@{/js/consulta.js}"></script>
+    <script th:inline="javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+            NexBank.init(/*[[@{/}]]*/ '/', /*[[@{/api}]]*/ '/api');
+            NexBankConsulta.init();
+        });
+    </script>
+</th:block>
+</html>

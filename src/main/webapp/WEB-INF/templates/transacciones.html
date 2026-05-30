@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout :: layout('Operaciones de Caja', ~{::main}, ~{::scripts})}">
+<main>
+    <h1 class="page-title">Operaciones de <span class="gradient-text">Caja</span></h1>
+    <p class="page-subtitle">Depósitos y retiros en efectivo sobre una cuenta existente.</p>
+
+    <section class="neo-card transact-section">
+        <div class="card-header">
+            <h2>Transacción</h2>
+            <p>Formato de cuenta: 000-000000-00 · Monto mayor a cero.</p>
+        </div>
+        <div class="form-grid">
+            <div class="form-group">
+                <label for="numCuenta">Número de cuenta</label>
+                <input type="text" id="numCuenta" placeholder="000-000000-00"
+                       pattern="\d{3}-\d{6}-\d{2}" title="Formato: 000-000000-00">
+            </div>
+            <div class="form-group">
+                <label for="monto">Monto ($)</label>
+                <input type="number" id="monto" placeholder="50.00" step="0.01" min="0.01">
+            </div>
+        </div>
+
+        <div class="actions-group">
+            <button type="button" class="btn-success" id="btnAbonar">
+                <span class="icon">▼</span> Abonar Efectivo
+            </button>
+            <button type="button" class="btn-danger" id="btnRetirar">
+                <span class="icon">▲</span> Retirar Efectivo
+            </button>
+        </div>
+
+        <div id="resultadoTransaccion" class="notification-area"></div>
+    </section>
+</main>
+<th:block th:fragment="scripts">
+    <script th:src="@{/js/transacciones.js}"></script>
+    <script th:inline="javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+            NexBank.init(/*[[@{/}]]*/ '/', /*[[@{/api}]]*/ '/api');
+            NexBankTransacciones.init();
+        });
+    </script>
+</th:block>
+</html>
