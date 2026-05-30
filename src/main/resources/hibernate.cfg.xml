@@ -6,13 +6,14 @@
     <session-factory>
         <!-- Edita usuario, contraseña y URL si tu MySQL no está en localhost:3306 -->
         <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/banco_neobank?useSSL=false&amp;serverTimezone=UTC&amp;allowPublicKeyRetrieval=true</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/banco_neobank?useSSL=false&amp;serverTimezone=UTC&amp;allowPublicKeyRetrieval=true&amp;createDatabaseIfNotExist=true</property>
         <property name="hibernate.connection.username">root</property>
+        <!-- Contraseña: vacía por defecto. Cada desarrollador usa config.local.ps1 (ver config.local.ps1.example) -->
         <property name="hibernate.connection.password"></property>
 
         <property name="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</property>
-        <!-- validate: exige que las tablas existan (las creas tú con schema/mysql-schema.sql) -->
-        <property name="hibernate.hbm2ddl.auto">validate</property>
+        <!-- update: crea/actualiza tablas según entidades (misma BD que usa Spring MVC y Jersey) -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
         <property name="hibernate.show_sql">false</property>
 
         <mapping class="com.banco.model.Cliente"/>

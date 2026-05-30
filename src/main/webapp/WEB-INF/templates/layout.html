@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" th:fragment="layout (titulo, contenido, scripts)">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${titulo} + ' | NexBank Global'">NexBank Global</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+
+<div class="background-animation">
+    <div class="circle circle-indigo"></div>
+    <div class="circle circle-purple"></div>
+</div>
+
+<div class="app-container">
+
+    <header class="main-header">
+        <a th:href="@{/}" class="logo-link">
+            <div class="logo">Nex<span class="purple-text">Bank</span></div>
+        </a>
+        <div class="agente-info">
+            <span class="status-indicator"></span>
+            Agente Autorizado
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <a th:href="@{/}" class="nav-link" th:classappend="${paginaActiva == 'home'} ? ' active'">Inicio</a>
+        <a th:href="@{/consulta}" class="nav-link" th:classappend="${paginaActiva == 'consulta'} ? ' active'">Consultar Cliente</a>
+        <a th:href="@{/transacciones}" class="nav-link" th:classappend="${paginaActiva == 'transacciones'} ? ' active'">Operaciones</a>
+    </nav>
+
+    <main class="dashboard" th:replace="${contenido}">
+        <!-- contenido de cada pantalla -->
+    </main>
+</div>
+
+<script th:src="@{/js/api.js}"></script>
+<th:block th:replace="${scripts}"></th:block>
+</body>
+</html>

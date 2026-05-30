@@ -61,7 +61,40 @@ body {
 }
 
 .logo { font-size: 1.8rem; font-weight: 700; letter-spacing: -1px; text-shadow: var(--neon-indigo-glow); }
+.logo-link { text-decoration: none; color: inherit; }
 .purple-text { color: var(--purple-primary); }
+
+.main-nav {
+    display: flex; gap: 0.5rem; margin-top: 1.5rem; flex-wrap: wrap;
+}
+.nav-link {
+    color: var(--text-muted); text-decoration: none; padding: 0.6rem 1.2rem;
+    border-radius: 10px; border: 1px solid transparent; font-size: 0.9rem;
+    transition: all 0.3s;
+}
+.nav-link:hover, .nav-link.active {
+    color: var(--text-white); border-color: var(--card-border);
+    background: rgba(79, 70, 229, 0.15); box-shadow: var(--neon-indigo-glow);
+}
+
+.page-subtitle { color: var(--text-muted); margin-bottom: 2rem; }
+
+.home-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem; margin-bottom: 2rem;
+}
+.home-card {
+    text-decoration: none; color: inherit; display: block;
+}
+.home-card-action {
+    display: inline-block; margin-top: 1rem; color: var(--purple-primary); font-weight: 600;
+}
+.info-list { list-style: none; color: var(--text-muted); line-height: 1.8; }
+.info-list strong { color: var(--text-white); }
+
+.loading-text { color: var(--indigo-primary); }
+.status-indicator.loading { background: var(--indigo-primary); box-shadow: 0 0 10px var(--indigo-primary); }
+.card-hint { font-size: 0.75rem; color: var(--text-muted); margin-top: 0.75rem; text-align: center; }
 
 .agente-info {
     font-size: 0.9rem; color: var(--text-muted); display: flex; align-items: center;

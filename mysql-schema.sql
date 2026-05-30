@@ -1,5 +1,17 @@
--- Base de datos alineada con las entidades Hibernate del proyecto Neobank-APPi
--- Ejecuta este script en MySQL ANTES de arrancar la aplicación.
+-- =============================================================================
+-- Neobank-APPi | Script MySQL (Spring MVC + Jersey REST + Hibernate)
+-- =============================================================================
+-- Conexion por defecto: localhost:3306 | usuario: root | sin contraseña
+-- Si tu MySQL usa clave, copia config.local.ps1.example -> config.local.ps1
+--
+-- PASOS PARA OTRO DESARROLLADOR (Windows):
+--   1. git clone <repo>
+--   2. (Opcional) config.local.ps1 con tu contraseña MySQL
+--   3. .\setup-db.ps1
+--   4. .\iniciar.ps1
+--
+-- Linux/macOS: config.local.sh.example -> config.local.sh y ./setup-db.sh
+-- =============================================================================
 
 CREATE DATABASE IF NOT EXISTS banco_neobank
     CHARACTER SET utf8mb4
@@ -7,7 +19,10 @@ CREATE DATABASE IF NOT EXISTS banco_neobank
 
 USE banco_neobank;
 
-CREATE TABLE IF NOT EXISTS cliente (
+DROP TABLE IF EXISTS cuenta;
+DROP TABLE IF EXISTS cliente;
+
+CREATE TABLE cliente (
     id BIGINT NOT NULL AUTO_INCREMENT,
     dui VARCHAR(10) NOT NULL,
     nombres VARCHAR(150) NULL,
@@ -15,7 +30,7 @@ CREATE TABLE IF NOT EXISTS cliente (
     UNIQUE KEY uk_cliente_dui (dui)
 ) ENGINE=InnoDB;
 
-CREATE TABLE IF NOT EXISTS cuenta (
+CREATE TABLE cuenta (
     id BIGINT NOT NULL AUTO_INCREMENT,
     id_cliente BIGINT NOT NULL,
     numero_cuenta VARCHAR(20) NOT NULL,
@@ -25,17 +40,12 @@ CREATE TABLE IF NOT EXISTS cuenta (
     CONSTRAINT fk_cuenta_cliente FOREIGN KEY (id_cliente) REFERENCES cliente (id)
 ) ENGINE=InnoDB;
 
--- Datos de prueba (puedes volver a ejecutar el script: IGNORE evita duplicados)
-INSERT IGNORE INTO cliente (dui, nombres) VALUES ('12345678-9', 'Cliente Demo');
+INSERT INTO cliente (dui, nombres) VALUES ('12345678-9', 'Cliente Demo');
 
-INSERT IGNORE INTO cuenta (id_cliente, numero_cuenta, saldo)
+INSERT INTO cuenta (id_cliente, numero_cuenta, saldo)
 SELECT c.id, '000-000001-00', 500.00
-FROM cliente c
-WHERE c.dui = '12345678-9'
-LIMIT 1;
+FROM cliente c WHERE c.dui = '12345678-9' LIMIT 1;
 
-INSERT IGNORE INTO cuenta (id_cliente, numero_cuenta, saldo)
+INSERT INTO cuenta (id_cliente, numero_cuenta, saldo)
 SELECT c.id, '000-000002-00', 120.50
-FROM cliente c
-WHERE c.dui = '12345678-9'
-LIMIT 1;
+FROM cliente c WHERE c.dui = '12345678-9' LIMIT 1;

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout :: layout('Panel del Agente', ~{::main}, ~{::scripts})}">
+<main>
+    <h1 class="page-title">Terminal de <span class="gradient-text">Operaciones de Caja</span></h1>
+    <p class="page-subtitle">Seleccione una operación para continuar.</p>
+
+    <div class="home-grid">
+        <a th:href="@{/consulta}" class="neo-card home-card">
+            <div class="card-header">
+                <h2>Consultar Cliente</h2>
+                <p>Busque cuentas asociadas al DUI del cliente.</p>
+            </div>
+            <span class="home-card-action">Ir a consulta →</span>
+        </a>
+
+        <a th:href="@{/transacciones}" class="neo-card home-card">
+            <div class="card-header">
+                <h2>Operaciones Rápidas</h2>
+                <p>Realice depósitos o retiros en efectivo.</p>
+            </div>
+            <span class="home-card-action">Ir a operaciones →</span>
+        </a>
+    </div>
+
+    <section class="neo-card info-section">
+        <div class="card-header">
+            <h2>Datos de prueba</h2>
+            <p>Use estos valores para validar la aplicación contra MySQL.</p>
+        </div>
+        <ul class="info-list">
+            <li><strong>DUI demo:</strong> 12345678-9</li>
+            <li><strong>Cuentas:</strong> 000-000001-00 ($500.00) · 000-000002-00 ($120.50)</li>
+        </ul>
+    </section>
+</main>
+<th:block th:fragment="scripts">
+    <script th:inline="javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+            NexBank.init(/*[[@{/}]]*/ '/', /*[[@{/api}]]*/ '/api');
+        });
+    </script>
+</th:block>
+</html>

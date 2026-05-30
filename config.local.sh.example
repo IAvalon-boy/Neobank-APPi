@@ -1,0 +1,5 @@
+# Copia como config.local.sh (no se sube a Git)
+export MYSQL_USER="root"
+export MYSQL_PASSWORD=""
+export MYSQL_HOST="localhost"
+export MYSQL_PORT="3306"
